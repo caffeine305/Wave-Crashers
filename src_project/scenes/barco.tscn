@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://scripts/barco2.gd" type="Script" id=1]
+[ext_resource path="res://imgs/barquito1a.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 2.81941, -116.435, 48.1019, -38.9783, 48.4991, 32.5204, 5.37057, 120.504, -37.8583, 42.1512, -41.7576, -38.9613 )
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 81.0762
+height = 139.362
+
+[node name="body" type="RigidBody2D" groups=[ "obstaculo", "barco", "enemigo" ]]
+
+transform/pos = Vector2( 510.481, 295.688 )
+transform/rot = -89.927
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 5
+contact_monitor = true
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="collider" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( 2.81941, -116.435, 48.1019, -38.9783, 48.4991, 32.5204, 5.37057, 120.504, -37.8583, 42.1512, -41.7576, -38.9613 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="escudo" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 2 )
+trigger = true
+_update_shape_index = 1
+
+
